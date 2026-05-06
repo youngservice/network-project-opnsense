@@ -1,99 +1,101 @@
-# 🌐 Virtual Network Infrastructure with OPNsense
+# 🌐 Infrastructure Réseau Virtualisée avec OPNsense
 
-## 📌 Project Overview
+## 📌 Présentation du projet
 
-This project demonstrates the design and implementation of a virtualized network infrastructure simulating a small enterprise environment.
+Ce projet présente la conception et la mise en œuvre d’une infrastructure réseau virtualisée simulant un environnement d’entreprise (PME).
 
-The goal is to apply core networking concepts such as segmentation, IP addressing, DHCP configuration, and firewall management using a real-world approach.
+L’objectif est d’appliquer des concepts fondamentaux en réseau tels que la segmentation, l’adressage IP, la configuration DHCP et la gestion d’un pare-feu, dans un contexte proche du réel.
 
 ---
 
-## 🎯 Objectives
+## 🎯 Objectifs
 
-* Design a segmented network architecture
-* Implement logical separation (ADMIN / USER / GUEST)
-* Configure DHCP services for dynamic IP allocation
-* Deploy and manage a firewall (OPNsense)
-* Simulate enterprise-level network behavior
+* Concevoir une architecture réseau segmentée
+* Mettre en place une séparation logique (ADMIN / USER / GUEST)
+* Configurer un service DHCP pour l’attribution dynamique des adresses IP
+* Déployer et administrer un pare-feu (OPNsense)
+* Simuler un environnement réseau d’entreprise
 
 ---
 
 ## 🧱 Architecture
 
-The network is divided into three logical segments:
+Le réseau est divisé en trois segments logiques :
 
-| Network | Role           | Subnet          |
-| ------- | -------------- | --------------- |
-| ADMIN   | Administration | 192.168.10.0/24 |
-| USER    | Employees      | 192.168.20.0/24 |
-| GUEST   | Visitors       | 192.168.30.0/24 |
-
----
-
-## ⚙️ Technologies Used
-
-* OPNsense (Firewall)
-* VMware Workstation (Virtualization)
-* Windows 10 (Admin client)
-* Ubuntu Linux (User client)
-* Fedora Linux (Guest client)
+| Réseau | Rôle           | Sous-réseau     |
+| ------ | -------------- | --------------- |
+| ADMIN  | Administration | 192.168.10.0/24 |
+| USER   | Employés       | 192.168.20.0/24 |
+| GUEST  | Invités        | 192.168.30.0/24 |
 
 ---
 
-## 🔧 Implementation Details
+## ⚙️ Technologies utilisées
 
-### Network Setup
-
-* WAN interface configured with NAT
-* LAN interface used for internal communication
-* Multiple virtual networks created to simulate VLAN segmentation
-
-### DHCP Configuration
-
-Each segment has its own DHCP scope:
-
-* ADMIN: 192.168.10.100 – 192.168.10.200
-* USER: 192.168.20.100 – 192.168.20.200
-* GUEST: 192.168.30.100 – 192.168.30.200
+* OPNsense (Pare-feu)
+* VMware Workstation (Virtualisation)
+* Windows 10 (poste ADMIN)
+* Ubuntu Linux (poste USER)
+* Fedora Linux (poste GUEST)
 
 ---
 
-## 🔐 Security Concept
+## 🔧 Détails de l’implémentation
 
-The architecture is designed to enforce isolation between network segments:
+### Configuration réseau
 
-* ADMIN network has full access
-* USER and GUEST networks are logically isolated
-* Network segmentation inspired by VLAN (802.1Q)
-
----
-
-## 🧪 Testing
-
-* DHCP assignment verified ✔️
-* Connectivity to firewall confirmed ✔️
-* Network segmentation behavior partially validated ⚠️
+* Interface WAN configurée en NAT (accès Internet simulé)
+* Interface LAN utilisée pour la communication interne
+* Création de plusieurs réseaux virtuels pour simuler une segmentation de type VLAN
 
 ---
 
-## ⚠️ Limitations
+### Configuration DHCP
 
-* VLANs simulated (no physical switch)
-* Advanced firewall rules not fully validated
-* No IDS/IPS implemented
+Chaque segment dispose de sa propre plage d’adressage :
 
----
-
-## 🚀 Future Improvements
-
-* Implement VLAN tagging with managed switch
-* Add VPN access
-* Deploy IDS/IPS (Snort/Suricata)
-* Add monitoring tools (Zabbix / Grafana)
+* ADMIN : 192.168.10.100 – 192.168.10.200
+* USER : 192.168.20.100 – 192.168.20.200
+* GUEST : 192.168.30.100 – 192.168.30.200
 
 ---
 
-## 👨‍💻 Author
+## 🔐 Concept de sécurité
 
-Network & Cloud Enthusiast
-Aspiring Network Administrator / AWS Cloud Engineer
+L’architecture a été conçue pour assurer une isolation logique entre les segments réseau :
+
+* Le réseau ADMIN dispose d’un accès complet
+* Les réseaux USER et GUEST sont isolés logiquement
+* La segmentation s’inspire du principe des VLAN (IEEE 802.1Q)
+
+---
+
+## 🧪 Tests réalisés
+
+* Attribution dynamique des adresses IP (DHCP) validée ✔️
+* Connectivité avec le pare-feu vérifiée ✔️
+* Comportement de segmentation partiellement validé ⚠️
+
+---
+
+## ⚠️ Limites du projet
+
+* VLAN simulés (absence de switch manageable)
+* Règles de pare-feu non entièrement validées
+* Absence de système IDS/IPS
+
+---
+
+## 🚀 Améliorations futures
+
+* Implémentation de VLAN réels avec un switch manageable
+* Mise en place d’un VPN
+* Déploiement d’un IDS/IPS (Snort / Suricata)
+* Ajout d’outils de supervision (Zabbix / Grafana)
+
+---
+
+## 👨‍💻 Auteur
+
+Passionné de réseaux et de cloud
+Futur Administrateur Réseau / Ingénieur Cloud AWS
