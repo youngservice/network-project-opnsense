@@ -1,73 +1,99 @@
-# network-project-opnsense
-Virtual Network Infrastructure with OPNsense
-# 🖧 Projet Infrastructure Réseau & Cloud – Administration Systèmes
+# 🌐 Virtual Network Infrastructure with OPNsense
 
-## 📌 Présentation
-Ce projet simule une infrastructure réseau d’entreprise moderne intégrant :
-- Administration Windows 10 / Windows Server
-- Segmentation VLAN
-- Sécurité réseau (Firewall, ACL)
-- Services réseau (DNS, DHCP, Active Directory)
-- Intégration Cloud (AWS / VPN Site-to-Site)
+## 📌 Project Overview
+
+This project demonstrates the design and implementation of a virtualized network infrastructure simulating a small enterprise environment.
+
+The goal is to apply core networking concepts such as segmentation, IP addressing, DHCP configuration, and firewall management using a real-world approach.
 
 ---
 
-## 🏗️ Architecture
+## 🎯 Objectives
 
-L’infrastructure est composée de :
-
-- 🌐 Internet (ISP)
-- 🔥 Firewall (OPNsense)
-- 🖧 Switch L2/L3 (VLANs)
-- 🖥️ Serveur Windows (AD DS, DNS, DHCP)
-- 👨‍💻 Clients Windows 10
-- ☁️ AWS (optionnel : VPC, EC2, VPN)
+* Design a segmented network architecture
+* Implement logical separation (ADMIN / USER / GUEST)
+* Configure DHCP services for dynamic IP allocation
+* Deploy and manage a firewall (OPNsense)
+* Simulate enterprise-level network behavior
 
 ---
 
-## 🔐 Segmentation VLAN
+## 🧱 Architecture
 
-| VLAN | Description        | Sous-réseau        |
-|------|------------------|--------------------|
-| 10   | Administration    | 192.168.10.0/24    |
-| 20   | Utilisateurs      | 192.168.20.0/24    |
-| 30   | Serveurs          | 192.168.30.0/24    |
----
+The network is divided into three logical segments:
 
-## ⚙️ Services configurés
-
-### 🖥️ Active Directory
-- Gestion centralisée des utilisateurs
-- Politique de groupe (GPO)
-
-### 🌐 DNS / DHCP
-- Résolution de noms interne
-- Attribution automatique des IP
-
-### 🔥 Sécurité réseau
-- Règles firewall (filtrage entrant/sortant)
-- NAT/PAT
-- Isolation VLAN
+| Network | Role           | Subnet          |
+| ------- | -------------- | --------------- |
+| ADMIN   | Administration | 192.168.10.0/24 |
+| USER    | Employees      | 192.168.20.0/24 |
+| GUEST   | Visitors       | 192.168.30.0/24 |
 
 ---
 
-## 🚀 Technologies utilisées
-- Windows Server 2019/2022
-- Windows 10
-- Cisco / Virtual Switch
-- OPNsense
-- AWS (EC2, VPC, VPN)
-- VMware / VirtualBox
+## ⚙️ Technologies Used
+
+* OPNsense (Firewall)
+* VMware Workstation (Virtualization)
+* Windows 10 (Admin client)
+* Ubuntu Linux (User client)
+* Fedora Linux (Guest client)
 
 ---
 
-## 📊 Objectifs du projet
-- Concevoir une architecture réseau professionnelle
-- Sécuriser les flux internes et externes
-- Simuler un environnement entreprise réel
-- Préparer certification CCNA / AWS Practitioner
+## 🔧 Implementation Details
+
+### Network Setup
+
+* WAN interface configured with NAT
+* LAN interface used for internal communication
+* Multiple virtual networks created to simulate VLAN segmentation
+
+### DHCP Configuration
+
+Each segment has its own DHCP scope:
+
+* ADMIN: 192.168.10.100 – 192.168.10.200
+* USER: 192.168.20.100 – 192.168.20.200
+* GUEST: 192.168.30.100 – 192.168.30.200
 
 ---
 
-## 👨‍💻 Auteur
-Administrateur Systèmes & Réseaux (Junior)
+## 🔐 Security Concept
+
+The architecture is designed to enforce isolation between network segments:
+
+* ADMIN network has full access
+* USER and GUEST networks are logically isolated
+* Network segmentation inspired by VLAN (802.1Q)
+
+---
+
+## 🧪 Testing
+
+* DHCP assignment verified ✔️
+* Connectivity to firewall confirmed ✔️
+* Network segmentation behavior partially validated ⚠️
+
+---
+
+## ⚠️ Limitations
+
+* VLANs simulated (no physical switch)
+* Advanced firewall rules not fully validated
+* No IDS/IPS implemented
+
+---
+
+## 🚀 Future Improvements
+
+* Implement VLAN tagging with managed switch
+* Add VPN access
+* Deploy IDS/IPS (Snort/Suricata)
+* Add monitoring tools (Zabbix / Grafana)
+
+---
+
+## 👨‍💻 Author
+
+Network & Cloud Enthusiast
+Aspiring Network Administrator / AWS Cloud Engineer
